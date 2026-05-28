@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-8517337380007202">
+<title>Contact — CompressIt</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8517337380007202" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;800;900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f5f2ee;--bg2:#ede9e3;--surface:#fff;--border:#e0dbd3;--accent:#1a472a;--accent2:#2d6a4f;--orange:#e07b39;--text:#1a1a18;--muted:#7a7670}
+  body{font-family:'Instrument Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5vw;background:rgba(245,242,238,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .logo{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1.3rem;letter-spacing:-0.04em;color:var(--text);text-decoration:none}
+  .logo span{color:var(--orange)}
+  .nav-back{color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;transition:color 0.2s}
+  .nav-back:hover{color:var(--text)}
+  .page-wrap{max-width:720px;margin:0 auto;padding:4rem 5vw 6rem}
+  .page-tag{display:inline-block;background:rgba(26,71,42,0.08);color:var(--accent);border:1px solid rgba(26,71,42,0.15);padding:0.3rem 0.9rem;border-radius:999px;font-size:0.75rem;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1.2rem}
+  h1{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;letter-spacing:-0.04em;margin-bottom:0.5rem}
+  .subtitle{font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:3rem}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+  .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem;display:flex;flex-direction:column;gap:0.6rem;transition:border-color 0.2s,transform 0.2s}
+  .contact-card:hover{border-color:rgba(26,71,42,0.3);transform:translateY(-2px)}
+  .card-icon{font-size:1.5rem}
+  .card-title{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:0.95rem}
+  .card-desc{font-size:0.82rem;color:var(--muted);line-height:1.6}
+  .card-link{display:inline-flex;align-items:center;gap:0.3rem;color:var(--accent);text-decoration:none;font-size:0.82rem;font-weight:600;margin-top:0.3rem}
+  .card-link:hover{text-decoration:underline}
+  .form-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem}
+  .form-card h2{font-family:'Cabinet Grotesk',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:1.5rem}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+  .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+  .form-group label{font-size:0.78rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em}
+  .form-group input,.form-group select,.form-group textarea{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.8rem 1rem;font-size:0.9rem;font-family:'Instrument Sans',sans-serif;color:var(--text);outline:none;transition:border-color 0.2s,box-shadow 0.2s;width:100%}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(26,71,42,0.4);box-shadow:0 0 0 3px rgba(26,71,42,0.07)}
+  .form-group textarea{resize:vertical;min-height:120px}
+  .submit-btn{width:100%;background:linear-gradient(135deg,var(--orange),#c9601a);color:#fff;border:none;border-radius:12px;padding:0.95rem;font-size:1rem;font-weight:700;font-family:'Cabinet Grotesk',sans-serif;cursor:pointer;transition:opacity 0.2s,transform 0.15s;box-shadow:0 4px 20px rgba(224,123,57,0.3);margin-top:0.5rem}
+  .submit-btn:hover{opacity:0.92;transform:translateY(-1px)}
+  .success-msg{display:none;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.2);border-radius:12px;padding:1.2rem;text-align:center;color:#166534;font-size:0.9rem;font-weight:500;margin-top:1rem}
+  .success-msg.show{display:block}
+  footer{border-top:1px solid var(--border);padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;background:var(--surface)}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .footer-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;transition:color 0.2s}
+  .footer-links a:hover{color:var(--text)}
+  .footer-copy{color:var(--muted);font-size:0.78rem}
+  @media(max-width:560px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/compressit" class="logo">Compress<span>It</span></a>
+  <a href="/compressit" class="nav-back">← Back to CompressIt</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-tag">Get in touch</div>
+  <h1>Contact Us</h1>
+  <p class="subtitle">Have a question, found a bug, or want to suggest a feature? We'd love to hear from you.</p>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="card-icon">🐛</div>
+      <div class="card-title">Report a Bug</div>
+      <div class="card-desc">Something not working? Let us know and we'll fix it as fast as possible.</div>
+    </div>
+    <div class="contact-card">
+      <div class="card-icon">💡</div>
+      <div class="card-title">Feature Request</div>
+      <div class="card-desc">Have an idea to make CompressIt better? We're always looking to improve.</div>
+    </div>
+    <div class="contact-card">
+      <div class="card-icon">⚖️</div>
+      <div class="card-title">Legal & Privacy</div>
+      <div class="card-desc">Questions about our <a href="/privacy-policy" style="color:var(--accent)">Privacy Policy</a> or <a href="/terms" style="color:var(--accent)">Terms of Use</a>.</div>
+    </div>
+    <div class="contact-card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">General Inquiry</div>
+      <div class="card-desc">Anything else on your mind — we're happy to chat.</div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h2>Send us a message</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="fname" placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="femail" placeholder="you@example.com">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Subject</label>
+      <select id="fsubject">
+        <option value="">Select a topic…</option>
+        <option value="bug">Bug Report</option>
+        <option value="feature">Feature Request</option>
+        <option value="legal">Legal / Privacy</option>
+        <option value="other">General Inquiry</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Message</label>
+      <textarea id="fmessage" placeholder="Describe your issue or question in detail…"></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitForm()">Send Message →</button>
+    <div class="success-msg" id="successMsg">✅ Thanks for reaching out! We'll get back to you within 48 hours.</div>
+  </div>
+</div>
+
+<footer>
+  <a href="/compressit" style="font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:1rem;color:var(--text);text-decoration:none;">Compress<span style="color:var(--orange)">It</span></a>
+  <div class="footer-links">
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="/terms">Terms of Use</a>
+    <a href="/contact">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 CompressIt. All rights reserved.</p>
+</footer>
+
+<script>
+  function submitForm() {
+    const name = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    const subject = document.getElementById('fsubject').value;
+    const message = document.getElementById('fmessage').value.trim();
+    if (!name || !email || !subject || !message) {
+      alert('Please fill in all fields before sending.');
+      return;
+    }
+    if (!email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    // Show success (hook up to a real form service like Formspree later)
+    document.getElementById('successMsg').classList.add('show');
+    document.getElementById('fname').value = '';
+    document.getElementById('femail').value = '';
+    document.getElementById('fsubject').value = '';
+    document.getElementById('fmessage').value = '';
+  }
+</script>
+</body>
+</html>

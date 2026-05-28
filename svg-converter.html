@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-8517337380007202">
+<title>SVG Converter — Free Online · CompressIt</title>
+<meta name="description" content="Convert SVG files to PNG, JPG, or WebP free in your browser. Set custom output dimensions. No upload needed.">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8517337380007202" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f2ee; --bg2: #ede9e3; --surface: #fff; --border: #e0dbd3;
+    --accent: #1a472a; --accent-light: #d8f3dc;
+    --text: #1a1a18; --muted: #7a7670; --orange: #e07b39; --orange-light: #fdf0e8;
+    --teal: #0d9488; --teal-light: #e0f7f4;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Instrument Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  body::before { content: ''; position: fixed; inset: 0; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; }
+  nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 5vw; background: rgba(245,242,238,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .logo { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 1.5rem; color: var(--text); text-decoration: none; letter-spacing: -0.04em; }
+  .logo span { color: var(--orange); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-right a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+  .nav-right a:hover { color: var(--text); }
+  .nav-pill { background: var(--accent); color: #fff; padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; font-family: 'Cabinet Grotesk', sans-serif; }
+
+  .hero { position: relative; z-index: 1; padding: 5rem 5vw 3rem; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; max-width: 1100px; margin: 0 auto; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--teal-light); color: var(--teal); border: 1px solid rgba(13,148,136,0.2); padding: 0.3rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; margin-bottom: 1.2rem; font-family: 'Cabinet Grotesk', sans-serif; }
+  h1 { font-family: 'Cabinet Grotesk', sans-serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 0.95; letter-spacing: -0.05em; margin-bottom: 1.5rem; }
+  h1 .line2 { color: var(--teal); display: block; }
+  .hero-sub { font-size: 1rem; color: var(--muted); max-width: 420px; line-height: 1.7; }
+  .hero-stats { display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; padding-bottom: 0.5rem; }
+  .stat-bubble { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1rem 1.4rem; text-align: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06); min-width: 130px; }
+  .stat-num { font-family: 'Cabinet Grotesk', sans-serif; font-size: 2rem; font-weight: 900; line-height: 1; color: var(--teal); }
+  .stat-label { font-size: 0.72rem; color: var(--muted); font-weight: 500; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .tool-wrap { position: relative; z-index: 1; max-width: 900px; margin: 0 auto 2rem; padding: 0 5vw; }
+  .dropzone { background: var(--surface); border: 2px dashed var(--border); border-radius: 24px; padding: 4rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+  .dropzone:hover, .dropzone.drag-over { border-color: var(--teal); background: var(--teal-light); transform: scale(1.005); }
+  .dropzone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .drop-icon { width: 72px; height: 72px; margin: 0 auto 1.2rem; background: var(--bg2); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; border: 1px solid var(--border); transition: transform 0.2s; }
+  .dropzone:hover .drop-icon { transform: translateY(-3px); }
+  .drop-title { font-family: 'Cabinet Grotesk', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 0.4rem; }
+  .drop-sub { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.2rem; }
+  .drop-btn { display: inline-block; background: var(--text); color: #fff; padding: 0.7rem 1.8rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600; font-family: 'Cabinet Grotesk', sans-serif; pointer-events: none; }
+  .drop-formats { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; }
+
+  .settings-bar { display: none; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-top: 1.5rem; gap: 1.5rem; align-items: flex-end; flex-wrap: wrap; }
+  .settings-bar.show { display: flex; }
+  .setting-group { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; min-width: 130px; }
+  .setting-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .setting-input { background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.65rem 0.9rem; font-size: 1rem; font-family: 'Cabinet Grotesk', sans-serif; font-weight: 700; color: var(--text); outline: none; transition: border-color 0.2s; width: 100%; }
+  .setting-input:focus { border-color: var(--teal); }
+  .format-pills { display: flex; gap: 0.4rem; }
+  .fmt-pill { padding: 0.4rem 0.8rem; border-radius: 8px; border: 1.5px solid var(--border); background: transparent; font-size: 0.82rem; font-weight: 700; cursor: pointer; font-family: 'Cabinet Grotesk', sans-serif; color: var(--muted); transition: all 0.15s; }
+  .fmt-pill:hover { border-color: var(--teal); color: var(--teal); }
+  .fmt-pill.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .convert-btn { background: linear-gradient(135deg, var(--teal), #0f766e); color: #fff; border: none; border-radius: 12px; padding: 0.85rem 2rem; font-size: 1rem; font-weight: 700; font-family: 'Cabinet Grotesk', sans-serif; cursor: pointer; white-space: nowrap; transition: opacity 0.2s, transform 0.15s; box-shadow: 0 4px 20px rgba(13,148,136,0.3); flex-shrink: 0; }
+  .convert-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+  .convert-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .preview-wrap { display: none; margin-top: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .preview-wrap.show { display: block; }
+  .preview-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-family: 'Cabinet Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem; display: flex; justify-content: space-between; align-items: center; }
+  .preview-dims { font-size: 0.78rem; color: var(--muted); font-weight: 400; font-family: 'Instrument Sans', sans-serif; }
+  .preview-body { padding: 1.5rem; display: flex; align-items: center; justify-content: center; background: repeating-conic-gradient(#e5e5e5 0% 25%, #fff 0% 50%) 0 0/20px 20px; min-height: 150px; }
+  .preview-body img { max-width: 100%; max-height: 400px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+  .preview-actions { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; }
+  .dl-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--accent); color: #fff; padding: 0.6rem 1.4rem; border-radius: 10px; font-size: 0.85rem; font-weight: 700; font-family: 'Cabinet Grotesk', sans-serif; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.2s; box-shadow: 0 3px 12px rgba(26,71,42,0.2); }
+  .dl-btn:hover { opacity: 0.9; }
+
+  .ad-slot { position: relative; z-index: 1; max-width: 900px; margin: 0 auto 2rem; padding: 0 5vw; }
+  .features-section { position: relative; z-index: 1; max-width: 900px; margin: 1rem auto 5rem; padding: 0 5vw; }
+  .section-eyebrow { font-family: 'Cabinet Grotesk', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.6rem; }
+  .section-heading { font-family: 'Cabinet Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 2.5rem; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+  .feat { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 1.6rem; transition: transform 0.2s, box-shadow 0.2s; }
+  .feat:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+  .feat-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem; border: 1px solid var(--border); }
+  .feat-name { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 0.35rem; }
+  .feat-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+  footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--surface); }
+  .footer-logo { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+  .footer-logo span { color: var(--orange); }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.83rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { color: var(--muted); font-size: 0.78rem; }
+  @media (max-width: 640px) { .hero { grid-template-columns: 1fr; } .hero-stats { flex-direction: row; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Compress<span>It</span></a>
+  <div class="nav-right">
+    <a href="index.html">All Tools</a>
+    <span class="nav-pill">100% FREE</span>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-tag">✏️ SVG → PNG / JPG / WebP · Any resolution</div>
+    <h1>Convert<span class="line2">SVGs.</span></h1>
+    <p class="hero-sub">Turn SVG vector files into crisp raster images at any resolution. Set exact output width and height. Download PNG, JPG, or WebP — all in your browser.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-bubble"><div class="stat-num">∞</div><div class="stat-label">Any resolution</div></div>
+    <div class="stat-bubble"><div class="stat-num">3</div><div class="stat-label">Output formats</div></div>
+  </div>
+</div>
+
+<div class="tool-wrap">
+  <div class="dropzone" id="dropzone">
+    <input type="file" id="fileInput" accept=".svg,image/svg+xml" multiple>
+    <div class="drop-icon">✏️</div>
+    <div class="drop-title">Drop SVG files here</div>
+    <div class="drop-sub">or click to browse your files</div>
+    <div class="drop-btn">Choose SVG Files</div>
+    <div class="drop-formats">Supports .svg files · Multiple files · Works in browser</div>
+  </div>
+
+  <div class="settings-bar" id="settingsBar">
+    <div class="setting-group">
+      <div class="setting-label">Output Width (px)</div>
+      <input type="number" class="setting-input" id="widthInput" placeholder="e.g. 1024" value="1024" min="1" max="8000">
+    </div>
+    <div class="setting-group">
+      <div class="setting-label">Output Height (px)</div>
+      <input type="number" class="setting-input" id="heightInput" placeholder="Auto" min="1" max="8000">
+    </div>
+    <div class="setting-group">
+      <div class="setting-label">Format</div>
+      <div class="format-pills">
+        <button class="fmt-pill active" onclick="selectFmt(this,'image/png','.png')">PNG</button>
+        <button class="fmt-pill" onclick="selectFmt(this,'image/jpeg','.jpg')">JPG</button>
+        <button class="fmt-pill" onclick="selectFmt(this,'image/webp','.webp')">WebP</button>
+      </div>
+    </div>
+    <button class="convert-btn" id="convertBtn" onclick="convertAll()">⚡ Convert SVG</button>
+  </div>
+
+  <div id="resultsWrap"></div>
+</div>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:90px;" data-ad-client="ca-pub-8517337380007202" data-ad-slot="REPLACE_SVG_SLOT_1" data-ad-format="horizontal"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<section class="features-section">
+  <div class="section-eyebrow">Why CompressIt SVG</div>
+  <div class="section-heading">Vector to pixels, perfectly.</div>
+  <div class="features-grid">
+    <div class="feat"><div class="feat-icon">🔒</div><div class="feat-name">100% Private</div><div class="feat-desc">Your SVG files never leave your device. All conversion happens locally via Canvas.</div></div>
+    <div class="feat"><div class="feat-icon">🔍</div><div class="feat-name">Any Resolution</div><div class="feat-desc">Set any output dimensions — from thumbnails to retina-quality exports at 4K and beyond.</div></div>
+    <div class="feat"><div class="feat-icon">🔄</div><div class="feat-name">3 Output Formats</div><div class="feat-desc">Export as PNG (with transparency), JPG, or WebP depending on your use case.</div></div>
+    <div class="feat"><div class="feat-icon">📦</div><div class="feat-name">Batch Convert</div><div class="feat-desc">Drop multiple SVG files and convert them all at once with the same settings.</div></div>
+  </div>
+</section>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block;width:100%;height:90px;" data-ad-client="ca-pub-8517337380007202" data-ad-slot="REPLACE_SVG_SLOT_2" data-ad-format="horizontal"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">Compress<span>It</span></a>
+  <div class="footer-links">
+    <a href="index.html">All Tools</a>
+    <a href="compressit.html">Image Compressor</a>
+    <a href="format-converter.html">Format Converter</a>
+    <a href="bg-remover.html">BG Remover</a>
+  </div>
+  <div class="footer-links">
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 CompressIt. All rights reserved.</p>
+</footer>
+
+<script>
+  let selectedFiles = [];
+  let outputMime = 'image/png';
+  let outputExt = '.png';
+
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('fileInput');
+
+  dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag-over'); });
+  dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+  dropzone.addEventListener('drop', e => {
+    e.preventDefault(); dropzone.classList.remove('drag-over');
+    handleFiles([...e.dataTransfer.files].filter(f => f.type === 'image/svg+xml' || f.name.endsWith('.svg')));
+  });
+  fileInput.addEventListener('change', () => handleFiles([...fileInput.files]));
+
+  function selectFmt(el, mime, ext) {
+    document.querySelectorAll('.fmt-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    outputMime = mime; outputExt = ext;
+  }
+
+  function handleFiles(files) {
+    if (!files.length) return;
+    selectedFiles = files;
+    document.getElementById('settingsBar').classList.add('show');
+    document.getElementById('resultsWrap').innerHTML = '';
+    document.getElementById('convertBtn').textContent = `⚡ Convert ${files.length} SVG${files.length > 1 ? 's' : ''}`;
+  }
+
+  async function convertAll() {
+    if (!selectedFiles.length) return;
+    document.getElementById('convertBtn').disabled = true;
+    document.getElementById('resultsWrap').innerHTML = '';
+
+    for (const file of selectedFiles) {
+      const { blob, w, h } = await convertSVG(file);
+      const url = URL.createObjectURL(blob);
+      const outName = file.name.replace(/\.svg$/i, '') + outputExt;
+
+      const wrap = document.createElement('div');
+      wrap.className = 'preview-wrap show';
+      wrap.innerHTML = `
+        <div class="preview-header">
+          ${file.name} → ${outName}
+          <span class="preview-dims">${w} × ${h}px · ${formatBytes(blob.size)}</span>
+        </div>
+        <div class="preview-body"><img src="${url}" alt=""></div>
+        <div class="preview-actions">
+          <a class="dl-btn" href="${url}" download="${outName}">⬇ Download ${outputExt.replace('.','').toUpperCase()}</a>
+        </div>
+      `;
+      document.getElementById('resultsWrap').appendChild(wrap);
+    }
+    document.getElementById('convertBtn').disabled = false;
+  }
+
+  function convertSVG(file) {
+    return new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const svgText = e.target.result;
+        const blob = new Blob([svgText], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        const img = new Image();
+        img.onload = () => {
+          const targetW = parseInt(document.getElementById('widthInput').value) || img.naturalWidth || 1024;
+          const hInput = parseInt(document.getElementById('heightInput').value);
+          const ratio = img.naturalHeight / img.naturalWidth;
+          const targetH = hInput || Math.round(targetW * ratio) || targetW;
+
+          const canvas = document.createElement('canvas');
+          canvas.width = targetW; canvas.height = targetH;
+          const ctx = canvas.getContext('2d');
+          if (outputMime !== 'image/png') { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, targetW, targetH); }
+          ctx.drawImage(img, 0, 0, targetW, targetH);
+          URL.revokeObjectURL(url);
+          canvas.toBlob(resBlob => resolve({ blob: resBlob, w: targetW, h: targetH }), outputMime, 0.92);
+        };
+        img.src = url;
+      };
+      reader.readAsText(file);
+    });
+  }
+
+  function formatBytes(b) {
+    if (b < 1024) return b + ' B';
+    if (b < 1048576) return (b/1024).toFixed(1) + ' KB';
+    return (b/1048576).toFixed(2) + ' MB';
+  }
+</script>
+</body>
+</html>
