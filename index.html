@@ -6,9 +6,8 @@
 <meta name="google-adsense-account" content="ca-pub-8517337380007202">
 <title>CompressIt — Free Online Image & PDF Tools</title>
 <meta name="description" content="Free browser-based tools: compress images, compress PDFs, resize images, convert formats, convert SVGs, and remove backgrounds. No uploads. No limits.">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8517337380007202"
-     crossorigin="anonymous"></script>
- <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8517337380007202" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -215,6 +214,31 @@
   .footer-links a:hover { color: var(--text); }
   .footer-copy { color: var(--muted); font-size: 0.78rem; }
 
+  /* FAQ */
+  .faq-section { position: relative; z-index: 1; max-width: 800px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 2.5rem; }
+  .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 1.3rem 1.5rem; font-family: 'Cabinet Grotesk', sans-serif; font-size: 1rem; font-weight: 800; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; color: var(--text); transition: background 0.15s; }
+  .faq-q:hover { background: var(--bg); }
+  .faq-arrow { font-size: 1.1rem; color: var(--orange); transition: transform 0.25s; flex-shrink: 0; }
+  .faq-q.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 1.5rem 1.3rem; font-size: 0.88rem; color: var(--muted); line-height: 1.75; border-top: 1px solid var(--border); padding-top: 1rem; }
+  .faq-a.show { display: block; }
+
+  /* ABOUT */
+  .about-section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+  .about-cards { display: flex; flex-direction: column; gap: 1rem; padding-top: 4.5rem; }
+  .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem; display: flex; gap: 1rem; align-items: flex-start; }
+  .about-card-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .about-card-title { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .about-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+  @media (max-width: 700px) {
+    .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .about-cards { padding-top: 0; }
+  }
   @media (max-width: 600px) {
     .stats-inner { padding: 2rem; }
     .stat-num { font-size: 2.2rem; }
@@ -365,6 +389,105 @@
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
+<!-- FAQ SECTION -->
+<section class="faq-section" id="faq">
+  <div class="section-eyebrow">FAQ</div>
+  <div class="section-heading">Common questions.</div>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Are these tools really free? <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">
+        Yes, completely free. CompressIt is funded by advertising, so every tool on this site is free to use with no hidden fees, no sign-up required, and no file limits. You can compress, convert, resize, and process as many files as you like.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do my files get uploaded to a server? <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">
+        No. Every tool on CompressIt runs entirely in your browser using JavaScript and the HTML5 Canvas API. Your files are processed locally on your device and never sent to any server. This means your images and documents stay 100% private.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How much can I compress an image? <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">
+        Typically between 40% and 90% reduction depending on the original image and your chosen quality setting. A 5MB photo can often be reduced to under 500KB with barely visible quality loss at 70–80% quality. PNG files with transparency tend to compress less than JPGs.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What image formats are supported? <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">
+        CompressIt supports JPG (JPEG), PNG, and WebP for image compression and resizing. The Format Converter supports converting between JPG, PNG, WebP, and GIF. The SVG Converter accepts .svg files and exports to PNG, JPG, or WebP.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How does the PDF compressor work? <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">
+        The PDF compressor uses PDF.js to render each page of your document to a canvas, then re-encodes the images at a lower quality level and rebuilds the PDF. It works best on image-heavy PDFs like scanned documents. Text-only PDFs may not reduce significantly since text data is already compact.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How does the background remover work? <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">
+        The background remover uses a neural network AI model that runs fully in your browser via WebAssembly. It detects the foreground subject and removes the background, outputting a transparent PNG. It works best on portraits, product photos, and objects with clear edges against a solid or simple background.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Can I use CompressIt on my phone? <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">
+        Yes. CompressIt is fully responsive and works on iPhone, Android, and any modern mobile browser. You can pick images from your camera roll and download the results directly to your device. Note that the AI background remover may be slower on mobile due to processing power requirements.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Is there a file size limit? <span class="faq-arrow">↓</span>
+      </button>
+      <div class="faq-a">
+        There is no enforced file size limit. However, very large files (over 50MB) may be slow to process depending on your device's memory and CPU. For best performance with large files, we recommend using a desktop or laptop computer with a modern browser like Chrome or Firefox.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="section-eyebrow">About CompressIt</div>
+      <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;letter-spacing:-0.04em;margin-bottom:1.2rem;">Built for privacy.<br>Built for speed.</h2>
+      <p>CompressIt was built with one principle: your files are yours. In a world where every online tool wants to upload your documents to a server, store them, and process them remotely, we took a different approach.</p>
+      <p>Every tool on this site runs entirely in your browser. We use modern web APIs — HTML5 Canvas, WebAssembly, PDF.js — to process your files locally on your own device. Nothing is transmitted. Nothing is stored. No account needed.</p>
+      <p>Whether you're a designer compressing assets, a developer converting SVGs, a small business owner cleaning up product photos, or just someone who needs to email a large PDF — CompressIt has a free, private, instant tool for you.</p>
+    </div>
+    <div class="about-cards">
+      <div class="about-card"><div class="about-card-icon">🌍</div><div class="about-card-title">Works Everywhere</div><div class="about-card-desc">Any device, any browser. No app to install.</div></div>
+      <div class="about-card"><div class="about-card-icon">🔒</div><div class="about-card-title">Zero Data Collection</div><div class="about-card-desc">We don't store, sell, or see your files.</div></div>
+      <div class="about-card"><div class="about-card-icon">⚡</div><div class="about-card-title">Instant Processing</div><div class="about-card-desc">No upload queues. Results in seconds.</div></div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <a href="index.html" class="footer-logo">Compress<span>It</span></a>
   <div class="footer-links">
@@ -383,5 +506,13 @@
   <p class="footer-copy">© 2026 CompressIt. All rights reserved.</p>
 </footer>
 
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('show'); });
+    if (!isOpen) { btn.classList.add('open'); answer.classList.add('show'); }
+  }
+</script>
 </body>
 </html>
