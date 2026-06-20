@@ -87,6 +87,19 @@
   .feat-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem; border: 1px solid var(--border); }
   .feat-name { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 0.35rem; }
   .feat-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+  .guide-section { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .guide-body p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.3rem; }
+  .guide-body strong { color: var(--text); font-weight: 700; }
+  .guide-h3 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); margin: 2rem 0 0.8rem; letter-spacing: -0.01em; }
+  .faq-section { position: relative; z-index: 1; max-width: 680px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { width: 100%; background: none; border: none; text-align: left; color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 1.2rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq-q:hover { color: var(--orange); }
+  .faq-icon { font-size: 1.1rem; color: var(--muted); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--orange); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+  .faq-a p { padding-bottom: 1.2rem; }
+  .faq-item.open .faq-a { max-height: 320px; }
   footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--surface); }
   .footer-logo { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--text); text-decoration: none; }
   .footer-logo span { color: var(--orange); }
@@ -171,6 +184,36 @@
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
+<section class="guide-section">
+  <div class="section-eyebrow">Guide</div>
+  <div class="section-heading">JPG vs PNG vs WebP<br>— which should you use?</div>
+  <div class="guide-body">
+    <p>Image formats aren't interchangeable — each one makes different tradeoffs between file size, quality, and features like transparency, and picking the wrong one is one of the most common reasons web pages load slowly or images look worse than they should.</p>
+
+    <p><strong>JPG (JPEG)</strong> is the default for photographs. It uses lossy compression optimized for natural images with lots of color gradients — skies, skin tones, textures — and achieves small file sizes at quality levels that look great to the eye. Its main limitation is that it doesn't support transparency, and repeated editing/re-saving gradually degrades quality.</p>
+
+    <p><strong>PNG</strong> is a lossless format, meaning it preserves every pixel exactly. It's the right choice for screenshots, logos, icons, and any image with sharp edges, flat colors, or text — areas where JPG's compression tends to introduce visible artifacts. PNG also supports transparency, making it the standard choice for logos and graphics that need to sit on top of other content. The tradeoff is larger file sizes, especially for photographic content.</p>
+
+    <p><strong>WebP</strong> is a newer format built specifically for the web that combines the best of both: it supports both lossy and lossless compression, supports transparency like PNG, and typically produces files 25–35% smaller than equivalent JPGs or PNGs at the same visual quality. Browser support is now near-universal, which is why most modern websites have switched to WebP as their default image format.</p>
+
+    <h3 class="guide-h3">Quick decision guide</h3>
+    <p>Use <strong>JPG</strong> for photos where small file size matters more than perfect transparency. Use <strong>PNG</strong> when you need transparency or the image has sharp text/lines that shouldn't blur. Use <strong>WebP</strong> whenever you want the smallest possible file with no real downside — it's the best general-purpose choice for modern websites, supporting both photo-style compression and transparency in one format.</p>
+
+    <h3 class="guide-h3">A note on GIF</h3>
+    <p>GIF is mostly relevant today for simple animations, since its color palette is limited to 256 colors — far fewer than JPG, PNG, or WebP. For static images, GIF is rarely the right choice anymore; WebP supports animation too and produces dramatically smaller files at higher quality.</p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-eyebrow">Questions</div>
+  <div class="section-heading">FAQ</div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Which format should I convert to for my website? <span class="faq-icon">+</span></button><div class="faq-a"><p>WebP is the best default for most websites — it produces smaller files than JPG or PNG at equivalent quality and supports transparency. Use JPG as a fallback if you need maximum compatibility with very old browsers or systems.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will converting PNG to JPG lose my transparency? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes — JPG does not support transparency, so any transparent areas in a PNG will be filled with a solid background color (typically white) when converted. If you need to keep transparency, convert to WebP or keep the file as PNG.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does converting between formats reduce quality? <span class="faq-icon">+</span></button><div class="faq-a"><p>Converting to a lossy format like JPG or lossy WebP can introduce some quality loss, controlled by the quality slider. Converting to PNG is lossless and won't degrade quality, though file size may increase. Converting from a lossy format to another lossy format can compound quality loss slightly, so it's best to start from the highest-quality original you have.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are my files uploaded anywhere during conversion? <span class="faq-icon">+</span></button><div class="faq-a"><p>No. All format conversion happens locally in your browser using the HTML5 Canvas API. Your images are never sent to a server.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I convert multiple images to different formats in one batch? <span class="faq-icon">+</span></button><div class="faq-a"><p>Batch conversion applies the same target format to every selected image. If you need different output formats for different files, run separate batches.</p></div></div>
+</section>
+
 <footer>
   <a href="index.html" class="footer-logo">Compress<span>It</span></a>
   <div class="footer-links">
@@ -203,6 +246,8 @@
   document.getElementById('qualitySlider').addEventListener('input', function() {
     document.getElementById('qualityVal').textContent = this.value + '%';
   });
+
+  function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
 
   function selectFmt(el, mime, ext) {
     document.querySelectorAll('.fmt-btn').forEach(b => b.classList.remove('active'));
