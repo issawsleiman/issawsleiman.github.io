@@ -95,6 +95,19 @@
   .feat-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem; border: 1px solid var(--border); }
   .feat-name { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 0.35rem; }
   .feat-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+  .guide-section { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .guide-body p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.3rem; }
+  .guide-body strong { color: var(--text); font-weight: 700; }
+  .guide-h3 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); margin: 2rem 0 0.8rem; letter-spacing: -0.01em; }
+  .faq-section { position: relative; z-index: 1; max-width: 680px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { width: 100%; background: none; border: none; text-align: left; color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 1.2rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq-q:hover { color: var(--orange); }
+  .faq-icon { font-size: 1.1rem; color: var(--muted); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--orange); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+  .faq-a p { padding-bottom: 1.2rem; }
+  .faq-item.open .faq-a { max-height: 320px; }
   footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--surface); }
   .footer-logo { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--text); text-decoration: none; }
   .footer-logo span { color: var(--orange); }
@@ -194,6 +207,35 @@
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
+<section class="guide-section">
+  <div class="section-eyebrow">Guide</div>
+  <div class="section-heading">How AI background<br>removal actually works.</div>
+  <div class="guide-body">
+    <p>Removing a background used to mean carefully tracing around a subject in Photoshop with a pen tool — a slow, fiddly process even for experienced editors. Modern background removal tools instead use a neural network trained on millions of images to recognize where a foreground subject ends and the background begins, a task called semantic segmentation. The model outputs a mask — essentially a map of which pixels belong to the subject — which is then used to make every background pixel transparent.</p>
+
+    <p>CompressIt's background remover runs this entire process inside your browser using WebAssembly, a technology that lets AI models execute at near-native speed without needing a server. That means the image data — which might include people's faces, private products, or unreleased designs — is never transmitted anywhere.</p>
+
+    <h3 class="guide-h3">What this tool is best at</h3>
+    <p>Background removal works best on subjects with clear, well-defined edges against a reasonably distinct background — portraits, product photos on plain backdrops, and objects photographed against a contrasting surface. Studio-style product photography, where the subject is lit clearly and separated from the background, tends to produce the cleanest cutouts.</p>
+
+    <h3 class="guide-h3">What can trip up the AI</h3>
+    <p>Complex edges are the main challenge — flyaway hair, fur, semi-transparent fabric like veils or lace, and motion blur are all harder for any segmentation model to handle perfectly, since the "edge" between subject and background isn't a clean line. Low contrast between the subject and background (a white shirt against a white wall, for example) can also confuse the model. For these tricky cases, you may need to manually clean up small areas afterward in an image editor.</p>
+
+    <h3 class="guide-h3">Common uses for transparent cutouts</h3>
+    <p>E-commerce sellers use background removal to create consistent product photos for marketplaces that require white or transparent backgrounds. Designers use it to combine subjects into new compositions or place them over branded backgrounds. It's also widely used for profile pictures, ID photo preparation, and presentation graphics where a clean, distraction-free subject is needed.</p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-eyebrow">Questions</div>
+  <div class="section-heading">FAQ</div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why didn't it remove the background cleanly? <span class="faq-icon">+</span></button><div class="faq-a"><p>This usually happens with low contrast between the subject and background, or complex edges like flyaway hair and semi-transparent fabric. Try a photo with a more distinct background, or manually touch up small problem areas afterward in an image editor.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What file format do I get back? <span class="faq-icon">+</span></button><div class="faq-a"><p>The output is always a PNG with a transparent background, since PNG is the only common format that supports transparency reliably across design tools and platforms.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is my photo uploaded to a server? <span class="faq-icon">+</span></button><div class="faq-a"><p>No. The AI model runs entirely in your browser via WebAssembly. Your photo is processed locally and is never sent anywhere — this is especially important for private or unreleased product photography.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why is it slower on my phone? <span class="faq-icon">+</span></button><div class="faq-a"><p>Running an AI model locally requires real processing power. Desktop and laptop CPUs are generally faster at this than mobile devices, so background removal may take noticeably longer on a phone, especially for larger images.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I remove backgrounds from multiple photos at once? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes, you can batch process multiple images, though since each image requires real AI computation, processing time scales with the number and size of the photos.</p></div></div>
+</section>
+
 <footer>
   <a href="index.html" class="footer-logo">Compress<span>It</span></a>
   <div class="footer-links">
@@ -228,6 +270,8 @@
     if (f) handleFile(f);
   });
   fileInput.addEventListener('change', () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); });
+
+  function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
 
   function handleFile(file) {
     selectedFile = file;
