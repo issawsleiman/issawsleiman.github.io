@@ -111,6 +111,21 @@
   .feat-name { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 0.35rem; }
   .feat-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
 
+  .guide-section { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .guide-body p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.3rem; }
+  .guide-body strong { color: var(--text); font-weight: 700; }
+  .guide-h3 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); margin: 2rem 0 0.8rem; letter-spacing: -0.01em; }
+
+  .faq-section { position: relative; z-index: 1; max-width: 680px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { width: 100%; background: none; border: none; text-align: left; color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 1.2rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq-q:hover { color: var(--orange); }
+  .faq-icon { font-size: 1.1rem; color: var(--muted); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--orange); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+  .faq-a p { padding-bottom: 1.2rem; }
+  .faq-item.open .faq-a { max-height: 320px; }
+
   footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--surface); }
   .footer-logo { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--text); text-decoration: none; }
   .footer-logo span { color: var(--orange); }
@@ -219,6 +234,35 @@
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
+<section class="guide-section">
+  <div class="section-eyebrow">Guide</div>
+  <div class="section-heading">Why are PDFs so large<br>— and how to fix it.</div>
+  <div class="guide-body">
+    <p>PDF was designed as a universal document format, but that flexibility comes at a cost: a PDF can bundle fonts, vector graphics, metadata, and — most commonly — full-resolution images, all inside a single file. A scanned contract, a photo-heavy brochure, or a presentation exported to PDF can easily balloon to 20–50MB, even though the visual content would look identical at a fraction of that size. In almost every case, the images embedded in the PDF are what's driving the bloat, not the text.</p>
+
+    <p>That's exactly what this tool targets. Rather than trying to compress the entire PDF file generically, CompressIt's PDF Compressor renders each page, locates the embedded images, and re-encodes them at a lower quality setting — the same way a photo gets compressed — before rebuilding the document. Text, layout, and vector elements are preserved; only the image data is reduced.</p>
+
+    <h3 class="guide-h3">When this works best</h3>
+    <p>Scanned documents and photo-heavy PDFs see the biggest improvements, often 60–85% smaller, since nearly all of their size comes from images. Presentations exported with embedded screenshots or photos also compress well. Pure text documents — contracts, reports, or eBooks with no images — won't shrink much, since there's no image data to optimize; the existing compression on text is already efficient.</p>
+
+    <h3 class="guide-h3">Common reasons to compress a PDF</h3>
+    <p>Email is the most frequent trigger — most providers cap attachments around 25MB, and a single high-resolution scan can exceed that easily. Job applications, government forms, and academic submissions often impose their own stricter file size limits. And if you're archiving or backing up large batches of scanned paperwork, even a moderate compression ratio per file adds up to meaningful storage savings across hundreds of documents.</p>
+
+    <h3 class="guide-h3">Choosing the right quality level</h3>
+    <p>For documents that will only be viewed on screen — emailed reports, online forms, digital archives — a quality setting around 50–60% is usually unnoticeable to the eye while cutting file size dramatically. If the PDF will be printed, especially anything with photos or fine detail, stay closer to 75–90% to preserve sharpness. Scanned black-and-white text documents can often go even lower without any visible quality loss, since there's less fine detail to preserve in the first place.</p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-eyebrow">Questions</div>
+  <div class="section-heading">FAQ</div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is my PDF uploaded to a server? <span class="faq-icon">+</span></button><div class="faq-a"><p>No. The PDF Compressor runs entirely in your browser using PDF.js and the HTML5 Canvas API. Your document is never transmitted anywhere — all processing happens locally on your device.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why didn't my PDF get much smaller? <span class="faq-icon">+</span></button><div class="faq-a"><p>This usually means the PDF is mostly text with few or no embedded images. Since the tool reduces file size by re-compressing images, text-only documents — which are already compact — won't shrink significantly. Scanned or photo-heavy PDFs see the biggest reductions.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will compressing reduce text quality or sharpness? <span class="faq-icon">+</span></button><div class="faq-a"><p>No. Only embedded images are re-compressed — text stays fully sharp and selectable, since it's rendered as vector/font data rather than a raster image.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What quality setting should I use? <span class="faq-icon">+</span></button><div class="faq-a"><p>50–60% works well for documents that are only viewed on screen, such as emailed reports. Use 75–90% if the PDF will be printed or contains photos where detail matters.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a file size limit? <span class="faq-icon">+</span></button><div class="faq-a"><p>There's no enforced limit, but very large PDFs (100MB+) may take longer to process depending on your device's memory. For best performance with large files, use a desktop browser like Chrome or Firefox.</p></div></div>
+</section>
+
 <footer>
   <a href="index.html" class="footer-logo">Compress<span>It</span></a>
   <div class="footer-links">
@@ -255,6 +299,8 @@
   document.getElementById('qualitySlider').addEventListener('input', function() {
     document.getElementById('qualityVal').textContent = this.value + '%';
   });
+
+  function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
 
   function handleFile(file) {
     selectedFile = file;
