@@ -91,6 +91,19 @@
   .feat-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem; border: 1px solid var(--border); }
   .feat-name { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 0.35rem; }
   .feat-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+  .guide-section { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .guide-body p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.3rem; }
+  .guide-body strong { color: var(--text); font-weight: 700; }
+  .guide-h3 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); margin: 2rem 0 0.8rem; letter-spacing: -0.01em; }
+  .faq-section { position: relative; z-index: 1; max-width: 680px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { width: 100%; background: none; border: none; text-align: left; color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 1.2rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq-q:hover { color: var(--orange); }
+  .faq-icon { font-size: 1.1rem; color: var(--muted); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--orange); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+  .faq-a p { padding-bottom: 1.2rem; }
+  .faq-item.open .faq-a { max-height: 320px; }
   footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--surface); }
   .footer-logo { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--text); text-decoration: none; }
   .footer-logo span { color: var(--orange); }
@@ -197,6 +210,35 @@
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
+<section class="guide-section">
+  <div class="section-eyebrow">Guide</div>
+  <div class="section-heading">Getting image dimensions<br>right, every time.</div>
+  <div class="guide-body">
+    <p>Resizing an image means changing its pixel dimensions — the actual width and height of the grid of pixels that make up the picture. This is different from compression, which keeps the dimensions the same but reduces file size by simplifying pixel data. Resizing is what you need when an image is the wrong physical size for where it's going: too large for a web page layout, too small for a print job, or not matching a platform's required dimensions.</p>
+
+    <p>Most resizing needs fall into two categories. <strong>Exact pixel dimensions</strong> are needed when a specific platform or layout demands a precise size — a 1200×630px image for a social media share card, a 2000×2000px square for a product listing, or a 1920×1080px banner for a website hero section. <strong>Percentage scaling</strong> is better when you just want to shrink or enlarge an image proportionally without hitting a specific number — for example, reducing a batch of photos to 50% of their original size to save space while keeping their relative proportions identical.</p>
+
+    <h3 class="guide-h3">Why aspect ratio matters</h3>
+    <p>Aspect ratio is the relationship between an image's width and height — a photo that's 4000×3000px has the same ratio as one that's 800×600px (4:3). If you resize only the width without adjusting the height to match, or vice versa, the image gets stretched or squashed, which is immediately noticeable to viewers. Locking the aspect ratio means that changing one dimension automatically recalculates the other to keep the proportions correct, so faces, logos, and straight lines don't end up distorted.</p>
+
+    <h3 class="guide-h3">Common dimension requirements</h3>
+    <p>Different platforms expect different sizes. Website hero images typically work best around 1920×1080px or 2560×1440px for retina displays. Product photos for online stores are commonly resized to a square format like 1000×1000px or 1500×1500px. Profile pictures across most platforms are square as well, usually between 400×400px and 800×800px. Email newsletter images are often kept narrower, around 600px wide, to avoid being scaled down awkwardly by email clients.</p>
+
+    <h3 class="guide-h3">Resizing vs. compressing — which do you need?</h3>
+    <p>If an image looks the right size on screen but the file itself is too large in megabytes, that's a job for compression, not resizing — shrinking the dimensions of an already correctly-sized image just makes it blurry or too small to use. If the image's physical dimensions don't fit where you need to place it — too wide for a sidebar, too small for a banner — that's when resizing is the right tool. Many workflows use both: resize first to the dimensions you need, then compress to bring the file size down further.</p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-eyebrow">Questions</div>
+  <div class="section-heading">FAQ</div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will resizing reduce my file size too? <span class="faq-icon">+</span></button><div class="faq-a"><p>Usually, yes — making an image smaller in pixel dimensions also reduces its file size, since there's less pixel data to store. But for the most control over file size specifically, use the Image Compressor after resizing, or combine both settings as needed.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if I don't lock the aspect ratio? <span class="faq-icon">+</span></button><div class="faq-a"><p>If you set a width and height that don't match the image's original proportions, the image will be stretched or squeezed to fit those exact dimensions, which usually looks distorted. Keep the lock on unless you specifically need a non-proportional crop.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I enlarge a small image to a bigger size? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes, the tool supports scaling up as well as down. Keep in mind that enlarging a low-resolution image beyond its original size can make it look soft or blurry, since the tool has to generate new pixel data rather than just removing it.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are my images uploaded anywhere? <span class="faq-icon">+</span></button><div class="faq-a"><p>No. All resizing happens locally in your browser using the HTML5 Canvas API. Your files are never sent to a server.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I resize multiple images at once with different target sizes? <span class="faq-icon">+</span></button><div class="faq-a"><p>Batch resizing applies the same target dimensions or percentage to all selected images at once. If you need different sizes for different images, run them through separately.</p></div></div>
+</section>
+
 <footer>
   <a href="index.html" class="footer-logo">Compress<span>It</span></a>
   <div class="footer-links">
@@ -243,6 +285,8 @@
       document.getElementById('dimInfo').textContent = `${files.length} images selected`;
     }
   }
+
+  function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
 
   function setMode(mode, el) {
     resizeMode = mode;
