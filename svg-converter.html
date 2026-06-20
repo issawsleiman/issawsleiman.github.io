@@ -83,6 +83,19 @@
   .feat-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem; border: 1px solid var(--border); }
   .feat-name { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 0.35rem; }
   .feat-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+  .guide-section { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .guide-body p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.3rem; }
+  .guide-body strong { color: var(--text); font-weight: 700; }
+  .guide-h3 { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--text); margin: 2rem 0 0.8rem; letter-spacing: -0.01em; }
+  .faq-section { position: relative; z-index: 1; max-width: 680px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { width: 100%; background: none; border: none; text-align: left; color: var(--text); font-family: 'Instrument Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 1.2rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq-q:hover { color: var(--orange); }
+  .faq-icon { font-size: 1.1rem; color: var(--muted); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--orange); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+  .faq-a p { padding-bottom: 1.2rem; }
+  .faq-item.open .faq-a { max-height: 320px; }
   footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2rem 5vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; background: var(--surface); }
   .footer-logo { font-family: 'Cabinet Grotesk', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--text); text-decoration: none; }
   .footer-logo span { color: var(--orange); }
@@ -169,6 +182,33 @@
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
+<section class="guide-section">
+  <div class="section-eyebrow">Guide</div>
+  <div class="section-heading">Why convert SVG<br>to a raster format?</div>
+  <div class="guide-body">
+    <p>SVG (Scalable Vector Graphics) is a fundamentally different kind of image format from JPG, PNG, or WebP. Instead of storing a grid of pixels, an SVG file stores mathematical instructions — paths, shapes, curves — that describe how to draw the image. This is why SVGs can be scaled to any size, from a tiny favicon to a building-sized banner, without ever losing sharpness or becoming pixelated. It's the standard format for logos, icons, and illustrations created in tools like Illustrator or Figma.</p>
+
+    <p>Raster formats like PNG, JPG, and WebP work the opposite way: they store a fixed grid of pixels at a specific resolution. Rendering an SVG to one of these formats — a process often called "rasterizing" — converts those mathematical instructions into an actual pixel grid at the exact dimensions you choose.</p>
+
+    <h3 class="guide-h3">When you need to rasterize an SVG</h3>
+    <p>Most image-handling software and many platforms don't support SVG directly. Social media platforms typically require JPG or PNG for profile pictures and post images. Many CMS and e-commerce platforms only accept raster formats for product photos and banners. Email clients render SVG inconsistently or not at all, so newsletter graphics usually need to be PNG or JPG. And if you're placing a logo into a Word document, PowerPoint slide, or video editing software, raster formats are far more universally supported.</p>
+
+    <h3 class="guide-h3">Choosing the right output format and size</h3>
+    <p>Use <strong>PNG</strong> when you need transparency — for example, exporting a logo that needs to sit on top of a colored background or photo. Use <strong>JPG</strong> when the SVG has a solid background and you want the smallest possible file size, since JPG doesn't support transparency. Use <strong>WebP</strong> for the best balance of small file size and transparency support, especially for web use.</p>
+    <p>Because SVGs are resolution-independent, you should export at the largest size you might ever need — it's much easier to use a high-resolution PNG and display it smaller than to try to enlarge a low-resolution export later. For retina/high-DPI displays, export at 2x or 3x the dimensions you plan to display the image at.</p>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="section-eyebrow">Questions</div>
+  <div class="section-heading">FAQ</div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why does my exported image look pixelated? <span class="faq-icon">+</span></button><div class="faq-a"><p>This usually happens when the output dimensions are set too low for how the image will be displayed. Since SVGs are vector-based, you can re-export at a much higher resolution with no quality loss — just increase the width/height before converting.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Should I export as PNG, JPG, or WebP? <span class="faq-icon">+</span></button><div class="faq-a"><p>Use PNG if you need a transparent background (most common for logos and icons). Use JPG if the design has a solid background and you want a smaller file. Use WebP for the smallest file size while still supporting transparency.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I convert a PNG or JPG back into an SVG? <span class="faq-icon">+</span></button><div class="faq-a"><p>No — this tool converts in one direction only, from SVG (vector) to raster formats. Converting a raster image into a true vector SVG requires a different process called image tracing or vectorization, which isn't supported here.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is my SVG file uploaded to a server? <span class="faq-icon">+</span></button><div class="faq-a"><p>No. The conversion happens entirely in your browser using the Canvas API. Your file is never transmitted anywhere.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What resolution should I export at? <span class="faq-icon">+</span></button><div class="faq-a"><p>Export at the largest size you might realistically need. For standard web use, 2x your display size works well for retina screens. For print or large banners, export significantly larger — there's no quality penalty for going bigger since the source is a vector.</p></div></div>
+</section>
+
 <footer>
   <a href="index.html" class="footer-logo">Compress<span>It</span></a>
   <div class="footer-links">
@@ -200,6 +240,8 @@
     handleFiles([...e.dataTransfer.files].filter(f => f.type === 'image/svg+xml' || f.name.endsWith('.svg')));
   });
   fileInput.addEventListener('change', () => handleFiles([...fileInput.files]));
+
+  function toggleFaq(btn) { btn.parentElement.classList.toggle('open'); }
 
   function selectFmt(el, mime, ext) {
     document.querySelectorAll('.fmt-pill').forEach(p => p.classList.remove('active'));
