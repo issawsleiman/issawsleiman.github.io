@@ -348,7 +348,16 @@
   .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--orange); }
   .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
   .faq-a p { padding-bottom: 1.2rem; }
-  .faq-item.open .faq-a { max-height: 200px; }
+  .faq-item.open .faq-a { max-height: 320px; }
+
+  /* ── GUIDE / ARTICLE ── */
+  .guide-section { position: relative; z-index: 1; max-width: 720px; margin: 0 auto 5rem; padding: 0 5vw; }
+  .guide-body p { color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.3rem; }
+  .guide-body strong { color: var(--text); font-weight: 700; }
+  .guide-h3 {
+    font-family: 'Cabinet Grotesk', sans-serif; font-weight: 800; font-size: 1.2rem;
+    color: var(--text); margin: 2rem 0 0.8rem; letter-spacing: -0.01em;
+  }
 
   /* ── FOOTER ── */
   footer {
@@ -489,15 +498,40 @@
   <div class="ad-inner">Advertisement · 970×90 Leaderboard</div>
 </div>
 
+<!-- GUIDE / ARTICLE CONTENT -->
+<section class="guide-section">
+  <div class="section-eyebrow">Guide</div>
+  <div class="section-heading">How image compression<br>actually works.</div>
+
+  <div class="guide-body">
+    <p>Every photo you take on a phone or download from a camera is bigger than it needs to be for the web. A single 12-megapixel photo can easily weigh 4–8MB, but most websites and messaging apps only need a fraction of that to look sharp on a screen. Image compression reduces the file size by simplifying the data that describes each pixel, without changing how the image looks to the human eye at normal viewing distance.</p>
+
+    <p>There are two broad approaches. <strong>Lossy compression</strong> — the method JPG and WebP use — discards image data that's least noticeable to human vision, which is why you can shrink a photo by 70–90% and barely see a difference. <strong>Lossless compression</strong> — closer to how PNG works — keeps every pixel exactly intact and instead optimizes how the file is structured internally, which yields smaller but less dramatic savings. CompressIt's slider lets you choose how aggressively to apply lossy compression, so you can balance visual quality against file size for your specific use case.</p>
+
+    <h3 class="guide-h3">When you actually need to compress an image</h3>
+    <p>Page speed is one of the biggest reasons. Large, uncompressed images are consistently the number one cause of slow-loading websites, and slow pages lose visitors and rank worse in search results. If you're uploading product photos to an online store, attaching screenshots to a support ticket, or emailing photos that keep bouncing back as "too large," compression solves all of these in seconds.</p>
+    <p>It also matters for storage. If you're a designer or photographer archiving thousands of images, even a 50% reduction per file adds up to gigabytes saved across a project. And on mobile, smaller images mean faster page loads and less data used, which matters a lot on weaker connections.</p>
+
+    <h3 class="guide-h3">Choosing a quality setting</h3>
+    <p>For most everyday use — blog posts, social media, product listings — a quality setting between 65% and 80% is the sweet spot: the file size drops dramatically while the image still looks crisp at normal zoom levels. If you're preparing an image for print or archival storage where every detail matters, stay above 85%. If the image is just a thumbnail, icon, or background element where fine detail isn't critical, you can safely go as low as 40–50% and the savings will be substantial.</p>
+    <p>It's worth noting that photos with lots of fine detail (foliage, fabric textures, crowds) compress less efficiently than photos with large flat areas of color (product shots on white backgrounds, simple graphics). PNG files with transparency also tend to compress less dramatically than JPGs, since the format is built for lossless precision rather than aggressive size reduction.</p>
+
+    <h3 class="guide-h3">Why CompressIt processes everything locally</h3>
+    <p>Most online compression tools work by uploading your file to a remote server, processing it there, and sending the result back. That means your photos — which might include private documents, ID scans, or unreleased product shots — pass through someone else's infrastructure and may be temporarily or permanently stored. CompressIt avoids this entirely by using your browser's built-in Canvas API to do the actual compression on your device. The file never leaves your computer or phone, which makes it a safer choice for anyone working with sensitive or proprietary images.</p>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq-section" id="faq">
   <div class="section-eyebrow">Questions</div>
   <div class="section-heading">FAQ</div>
   <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are my images uploaded anywhere? <span class="faq-icon">+</span></button><div class="faq-a"><p>No. CompressIt compresses entirely in your browser using JavaScript. Your images never leave your device. No servers, no storage, no privacy risk.</p></div></div>
-  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What quality setting should I use? <span class="faq-icon">+</span></button><div class="faq-a"><p>For web use, 70–80% gives the best balance of quality and size. For social media, 60–70% is fine. For archiving, use 85–95%.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What quality setting should I use? <span class="faq-icon">+</span></button><div class="faq-a"><p>For web use, 70–80% gives the best balance of quality and size. For social media, 60–70% is fine. For archiving, use 85–95%. Flat, simple images compress more efficiently than busy, detailed ones.</p></div></div>
   <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What image formats are supported? <span class="faq-icon">+</span></button><div class="faq-a"><p>CompressIt supports JPG, PNG, and WebP. You can also convert between these formats while compressing.</p></div></div>
   <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a file size or number limit? <span class="faq-icon">+</span></button><div class="faq-a"><p>No limits. You can compress as many images as you want, as large as your browser can handle (typically several hundred MB per file).</p></div></div>
   <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does it work on mobile? <span class="faq-icon">+</span></button><div class="faq-a"><p>Yes! CompressIt works on iPhone, Android, and any device with a modern browser. No app install needed.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will compressing reduce the image dimensions too? <span class="faq-icon">+</span></button><div class="faq-a"><p>No, compression only reduces file size by re-encoding pixel data — the width and height stay the same. If you also want to change the dimensions, use the Image Resizer tool, which lets you scale by pixels or percentage.</p></div></div>
+  <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Why does my PNG not shrink as much as my JPG? <span class="faq-icon">+</span></button><div class="faq-a"><p>PNG is a lossless format designed for precision, especially with transparency, so it has less room to shrink than JPG's lossy compression. Converting a PNG to WebP usually gives a much bigger size reduction while keeping transparency intact.</p></div></div>
 </section>
 
 <!-- FOOTER -->
